@@ -2,14 +2,15 @@ MovieList m;
 int startTime;
 int go = 0;
 String [] w = {"good", "great", "superb", "excellent", "wonderful", "brilliant", 
-  "exciting", "outstanding", "powerful", "inspiring", "amazing", "beautiful", "revolutionary" };
+  "exciting", "outstanding", "powerful", "inspiring", "amazing", "beautiful", "exceptional" };
 String [] w2 = {"bad", "terrible", "horrible", "disgusting", "garbage", "awful", "poor",
   "lousy", "atrocious", "unbearable", "hopeless", "embarrassing", "rubbish"};
 String [] w3 = {"funny", "amusing", "uproarious", "witty", "comical", "jolly", 
   "lighthearted", "hilarious", "slapstick", "humorous", "rich", "priceless", "entertaining"};
 String [] w4 = {"sad", "heartbreaking", "tearjerker", "melancholic", "romantic", "reminiscent", 
   "lovely", "emotional", "tragic", "sentimental",  "sorrow", "heart-wrenching", "drama"};
-
+String [] w5 = {"scary", "terrifying", "horrifying", "eerie", "creepy", "haunting", 
+  "frightening", "chilling", "sinister", "unnerving", "spooky", "daunting", "appalling"}; 
 
 void setup(){
   size(800, 800);
@@ -27,6 +28,7 @@ void setup(){
     println(w2);
     println(w3);
     println(w4);
+    println(w5);
     
   //textSize(30);
   //text("Movie Reviews", 300, 50);
@@ -173,6 +175,27 @@ void draw(){
       y4 += 50;
     }
   }
+  if(go==4){
+    textSize(50);
+    text("Scary", 120, 50);
+    int x5 = 50;
+    int y5 = 150;
+    int a5 = 0;
+    double b5 = 0;
+    for(String s : w5){
+      a5 = m.countWords(s);
+      b5 = m.getAverageScore(s);
+      fill(70);
+      rect(x5, y5-17, 700, 20);
+      textSize(20);
+      fill(#D18BFF);
+      text(" " + s, x5, y5);
+      text(" " + b5, x5+320, y5);
+      text(" " + a5, x5+650, y5);
+      //x += 50;
+      y5 += 50;
+    }
+  }
   int time = millis() - startTime;
     if(time>5000){
       startTime = millis();
@@ -180,7 +203,7 @@ void draw(){
     }
 }
 void reset(){
-  if(go<3){
+  if(go<4){
     go = go+=1;
   }else{
     go = 0;
